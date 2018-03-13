@@ -45,6 +45,7 @@ const handleRequest = async (accesstoken) => {
     const userTableRow = await fetchDataFromUserTable(facebookTableRow.userId);
     const twitterData = await getTwitterData(userTableRow.id);
     const maxAmount = maximumEligibleAmount(userTableRow.socialScore);
+    const twitterTableRow = await models.twitters.findOne({ where: { userId: userTableRow.id } });
     const data = {
       data: {
         firstName: userTableRow.firstName,
@@ -57,6 +58,7 @@ const handleRequest = async (accesstoken) => {
           },
           twitter: {
             isVerified: false,
+            screenName: twitterTableRow ? twitterTableRow.id : '',
             secondFollowersCount: twitterData.total,
             followersCount: twitterData.followers.length,
             impact: twitterData.impact,
