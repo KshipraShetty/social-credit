@@ -19,7 +19,6 @@ Object {
     "firstName": "Shachi",
     "lastName": "Mathur",
     "maxAmount": 500000,
-    "screenName": "",
     "socialScore": 50,
   },
   "statusCode": 200,
